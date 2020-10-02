@@ -36,3 +36,58 @@
     transform: rotate(360deg);
   }
 }
+
+.normalCss{
+  border:1px solid red;
+}
+
+.dClass{
+  text-transform: uppercase;
+}
+
+.heading{
+  color:red;
+}
+
+.heading1{
+  color:green;
+  font-size: 30px;
+  text-transform: capitalize;
+}
+
+.myFont{
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.myColor{
+  color:red
+}
+
+.myText{
+  text-transform: capitalize;
+}
+
+.iClass1{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-size:18px;
+}
+
+.iClass1{
+  background-color: brown;
+}
+
+.btn{
+  color:green
+}
+
+.btn-pressed{
+  font-weight: bold;
+}
+
+.btn-over{
+  font-style: italic
+}
+
