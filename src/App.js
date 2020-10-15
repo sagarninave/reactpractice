@@ -5,13 +5,14 @@ import FunctionalProps, { FunctionDetailedProps, ClassProps } from './components
 import AnonymousFunction from './components/AnonymousFunction';
 import FunctionalState , { ClassState } from './components/States';
 import ChangeFunctionalStateData, { ChangeClassStateData } from './components/ChangeStateData';
-import Lifecycle from './components/Lifecycle';
+import ClassTimerLifecycle, { ClassLifeCycle_A, ClassLifeCycle_C, ClassLifeCycle_D, FunctionalLifeCycle } from './components/Lifecycle';
 import Event from './components/EventHandling';
-import FunctionalUseEffect, { ClassUseEffect } from './components/UseEffect';
 import FunctionalFragment1, { FunctionalFragment2, FunctionalFragment3, ClassFragment  } from './components/Fragment';
 import MapFunction from './components/MapFunction';
 import Stylesheet from './components/Stylesheet';
 import FunctionalForm, { ClassForm , FunctionalValidForm} from './components/Forms';
+import Routing from './components/Routing';
+import FunctionalGetAPI, { ClassGetAPI, FunctionalPostAPI } from './components/Api';
 
 function App() {
 
@@ -70,14 +71,11 @@ function App() {
         <hr/>
 
         <strong className="heading"> Lifecycle </strong>
-        <Lifecycle/>
-        <hr/>
-
-        <strong className="heading"> Use Effect For Function </strong>
-        <FunctionalUseEffect/>
-
-        <strong className="heading"> Use Effect for Class </strong>
-        <ClassUseEffect/>
+        <ClassTimerLifecycle/>
+        <ClassLifeCycle_A/>
+        <ClassLifeCycle_C/>
+        <ClassLifeCycle_D/>
+        <FunctionalLifeCycle/>
         <hr/>
 
         <strong className="heading"> Funmctional Fragment  </strong>
@@ -103,6 +101,16 @@ function App() {
         <ClassForm/>
         <FunctionalValidForm/>
         <hr/>
+
+        <strong className="heading"> Routing</strong>
+        <Routing/>
+        <hr/>
+
+        <strong className="heading"> API Fetched </strong>
+        <FunctionalGetAPI/>
+        <ClassGetAPI/>
+        <FunctionalPostAPI/>
+        <hr/>   
     </div>
   );
 }

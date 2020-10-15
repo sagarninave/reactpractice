@@ -23,7 +23,7 @@ function Stylesheet(props){
       <p style={inline}>hello! sagar, i am in inline css class</p>
       <p className="normalCss">hello! sagar, i am in normal css class</p>
       <p className={"myFont myColor myText"}>hello! sagar, i am in multiple css class</p>
-      <p className={dynamicClass}> Hello! Sagar i am in dynamic css class </p>
+      <p cla ssName={dynamicClass}> Hello! Sagar i am in dynamic css class </p>
       <p className={conditionalClass}> Hello! Sagar i am in conditional css class </p>
       <p className={importedClass}>hello! sagar, i am in imported classname css styled</p>
       <p className={dictClass}>hello! sagar, i am in object classname css styled</p>
