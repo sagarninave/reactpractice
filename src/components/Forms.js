@@ -63,3 +63,54 @@ export class ClassForm extends React.Component{
     )
   }
 }
+
+export function FunctionalValidForm(){
+
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [firstnameError, setFirstNameError] = useState(null);
+  const [lastnameError, setLastNameError] = useState(null);
+  const [emailError, setEmailError] = useState(null);
+
+  function valid(){
+    if(firstname === "" && lastname === "" && email === ""){
+      setFirstNameError("first name is empty");
+      setLastNameError("last name is empty");
+      setEmailError("Email is empty");
+    }
+    else if(firstname.length < 5 && lastname.length < 5 && email.length < 5){
+      setFirstNameError("first name should be morth than 4");
+      setLastNameError("last name is should be morth than 4");
+      setEmailError("Email is should be morth than 4");
+    }
+    else{
+      return true
+    }
+  }
+
+  function SubmitForm(e){
+    e.preventDefault()
+    if(valid()){
+      console.log(firstname, lastname, email)
+    }
+  }
+
+
+  return(
+    <div>
+      <form>
+        <input type="text" onChange={(e) => setFirstName(e.target.value)}></input><br/>
+        <span> {firstname == "" ? firstnameError : null} </span><br/>
+
+        <input type="text" onChange={(e) => setLastName(e.target.value)}></input><br/>
+        <span> {lastname == "" ? lastnameError : null} </span><br/>
+
+        <input type="text" onChange={(e) => setEmail(e.target.value)}></input><br/>
+        <span> {email == "" ? emailError : null} </span><br/>
+
+        <button onClick={SubmitForm}> Submit </button>
+      </form>
+    </div>
+  )
+}

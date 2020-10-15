@@ -11,7 +11,7 @@ import FunctionalUseEffect, { ClassUseEffect } from './components/UseEffect';
 import FunctionalFragment1, { FunctionalFragment2, FunctionalFragment3, ClassFragment  } from './components/Fragment';
 import MapFunction from './components/MapFunction';
 import Stylesheet from './components/Stylesheet';
-import FunctionalForm, { ClassForm } from './components/Forms';
+import FunctionalForm, { ClassForm , FunctionalValidForm} from './components/Forms';
 
 function App() {
 
@@ -101,6 +101,7 @@ function App() {
         <FunctionalForm/>
         <strong className="heading"> Class Form </strong>
         <ClassForm/>
+        <FunctionalValidForm/>
         <hr/>
     </div>
   );
