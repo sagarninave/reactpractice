@@ -117,16 +117,17 @@ export function FunctionalPostAPI() {
   const [error, setError] = useState({});
 
   useEffect(() => {
-    axios.post("http://127.0.0.1:8000/account/register", apiData).then(
+    axios.post("http://127.0.0.1:8000/account/register", apiData)
+    .then(
       response => {
         console.log(response.data)
         setGetAPIResponseData(response.data);
-      })
-      .catch(error => {
-        console.log(error)
-        setError([error])
-      })
-  })
+    })
+    .catch(error => {
+      console.log(error)
+      setError([error])
+    })
+  }, [])
 
   return (
     <div>

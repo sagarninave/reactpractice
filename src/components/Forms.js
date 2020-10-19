@@ -64,50 +64,131 @@ export class ClassForm extends React.Component{
   }
 }
 
+
+
+
+
+
+
+
+
+
 export function FunctionalValidForm(){
 
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [firstnameError, setFirstNameError] = useState(null);
-  const [lastnameError, setLastNameError] = useState(null);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState(null);
+  
+  const [firstNameError, setFirstNameError] = useState(null);
+  const [lastNameError, setLastNameError] = useState(null);
   const [emailError, setEmailError] = useState(null);
+  const [passwordError, setPasswordError] = useState(null);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(null);
 
-  function valid(){
-    if(firstname === "" && lastname === "" && email === ""){
-      setFirstNameError("first name is empty");
-      setLastNameError("last name is empty");
-      setEmailError("Email is empty");
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const [allFieldValues, setAllFieldValues] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
+
+  const handleChange = name => event => {
+    if (name == 'firstName') {
+      setFirstName(event.target.value);
+    } else if (name == 'lastName') {
+      setLastName(event.target.value);
+    } else if (name == 'email') {
+      setEmail(event.target.value);
+    } else if (name == 'password') {
+      setPassword(event.target.value);
+    } else if (name == 'confirmPassword') {
+      setConfirmPassword(event.target.value);
     }
-    else if(firstname.length < 5 && lastname.length < 5 && email.length < 5){
-      setFirstNameError("first name should be morth than 4");
-      setLastNameError("last name is should be morth than 4");
-      setEmailError("Email is should be morth than 4");
-    }
-    else{
-      return true
+    setFirstNameError(false);
+    setLastNameError(false);
+    setEmailError(false);
+    setPasswordError(false);
+    setConfirmPasswordError(false);
+    setAllFieldValues({ ...allFieldValues, [name]: event.target.value });
+  }
+
+  const validateForm = async e => {
+    setErrorMessage(null)
+    let checkEmail = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/;
+    let passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$.!%*?&]{8,}$/
+    e.preventDefault()
+    if (allFieldValues.firstName == '' &&
+        allFieldValues.lastName == '' &&
+        allFieldValues.email == '' &&
+        allFieldValues.password == '') {
+      setFirstNameError(true);
+      setLastNameError(true);
+      setEmailError(true);
+      setPasswordError(true);
+      setConfirmPasswordError(true);
+      setErrorMessage('All Fields Required');
+    } else if (allFieldValues.firstName == '') {
+      setFirstNameError(true);
+      setErrorMessage('First Name Required');
+    } else if (allFieldValues.lastName == '') {
+      setLastNameError(true);
+      setErrorMessage('Last Name Required');
+    } else if (allFieldValues.email == '') {
+      setEmailError(true);
+      setErrorMessage('E-mail Required');
+    } else if (!checkEmail.test(allFieldValues.email)) {
+      setPasswordError(true);
+      setErrorMessage('Email format must be like yourname@example.com');
+    } else if (allFieldValues.password == '') {
+      setPasswordError(true);
+      setErrorMessage('Password Required');
+    } else if (!passwordCheck.test(allFieldValues.password)) {
+      setPasswordError(true);
+      setErrorMessage('Password does not meet the criterion.');
+    } else if (allFieldValues.password.includes(allFieldValues.email)) {
+      setPasswordError(true);
+      setErrorMessage('Password must not contain your email.');
+    } else if ((allFieldValues.password).toLowerCase().includes((allFieldValues.firstName).toLowerCase()) && (allFieldValues.password).toLowerCase().includes((allFieldValues.lastName).toLowerCase())) {
+      setPasswordError(true);
+      setErrorMessage('Password not contain your name.');
+    } else if (allFieldValues.password !== allFieldValues.confirmPassword) {
+      setConfirmPasswordError(true);
+      setErrorMessage('The provided passwords do not match');
+    } else {
+      console.log("all good");
+      console.log("Error Massage",errorMessage);
+      SubmitForm()
     }
   }
 
   function SubmitForm(e){
     e.preventDefault()
-    if(valid()){
-      console.log(firstname, lastname, email)
-    }
+    console.log("Error Massage",errorMessage);
+    console.log("all fields on submit", allFieldValues)
   }
-
 
   return(
     <div>
-      <form>
-        <input type="text" onChange={(e) => setFirstName(e.target.value)}></input><br/>
-        <span> {firstname == "" ? firstnameError : null} </span><br/>
+      <form onSubmit={e => validateForm(e)}>
+        <input placeholder="First Name *" ype="text" onChange={handleChange('firstName')} value={firstName} required /> 
+        <br/> {firstNameError ? errorMessage : null} <br/>
 
-        <input type="text" onChange={(e) => setLastName(e.target.value)}></input><br/>
-        <span> {lastname == "" ? lastnameError : null} </span><br/>
+        <input placeholder="Last Name *" type="text" onChange={handleChange('lastName')} value={lastName} required/>
+        <br/> {lastNameError ? errorMessage : null} <br/>
 
-        <input type="text" onChange={(e) => setEmail(e.target.value)}></input><br/>
-        <span> {email == "" ? emailError : null} </span><br/>
+        <input placeholder="Email *" type="text" onChange={handleChange('email')} value={email} required/>
+        <br/> {emailError ? errorMessage : null} <br/>
+
+        <input placeholder="Password *" type="password" onChange={handleChange('password')} value={password} required/>
+        <br/> {passwordError ? errorMessage : null} <br/>
+        
+        <input placeholder="Confirm Password*" type="password" onChange={handleChange('confirmPassword')} value={confirmPassword} required/>
+        <br/> {confirmPasswordError ? errorMessage : null} <br/>
 
         <button onClick={SubmitForm}> Submit </button>
       </form>

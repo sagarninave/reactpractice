@@ -167,6 +167,21 @@ export class ClassLifeCycle_D extends React.Component {
 }
 
 
+export class ClassComponentWillUnmount extends React.Component{
+
+  componentDidMount(){    
+    console.log("componentDidMount Called in Unmount Compenent")
+  }  
+
+  componentWillUnmount(){    
+    console.log("componentWillUnmount Called in Unmount component")
+  }
+
+  render(){
+    return <p> Unmount component </p>
+  }
+}
+
 export class TitleCount extends React.Component{
   constructor(props){
     super(props)

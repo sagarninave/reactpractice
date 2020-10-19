@@ -3,114 +3,124 @@ import './App.css';
 import FunctionComponent, { ClassComponent } from './components/Components';
 import FunctionalProps, { FunctionDetailedProps, ClassProps } from './components/Props'
 import AnonymousFunction from './components/AnonymousFunction';
-import FunctionalState , { ClassState } from './components/States';
+import FunctionalState, { ClassState } from './components/States';
 import ChangeFunctionalStateData, { ChangeClassStateData } from './components/ChangeStateData';
-import ClassTimerLifecycle, { ClassLifeCycle_A, ClassLifeCycle_C, ClassLifeCycle_D, FunctionalLifeCycle } from './components/Lifecycle';
+import ClassTimerLifecycle, { ClassLifeCycle_A, ClassLifeCycle_C, ClassLifeCycle_D, FunctionalLifeCycle, ClassComponentWillUnmount } from './components/Lifecycle';
 import Event from './components/EventHandling';
-import FunctionalFragment1, { FunctionalFragment2, FunctionalFragment3, ClassFragment  } from './components/Fragment';
+import FunctionalFragment1, { FunctionalFragment2, FunctionalFragment3, ClassFragment } from './components/Fragment';
 import MapFunction from './components/MapFunction';
 import Stylesheet from './components/Stylesheet';
-import FunctionalForm, { ClassForm , FunctionalValidForm} from './components/Forms';
+import FunctionalForm, { ClassForm, FunctionalValidForm } from './components/Forms';
 import Routing from './components/Routing';
 import FunctionalGetAPI, { ClassGetAPI, FunctionalPostAPI } from './components/Api';
-
+import { Navbar, Nav } from 'react-bootstrap';
 function App() {
 
-  const name = <h1 style={{display:"inline"}}> Sagar </h1>
-  
+  const name = <h1 style={{ display: "inline" }}> Sagar </h1>
+
   return (
-    <div className="App">
+    <div className="App container-fluid" style={{margin:0, padding:0}}>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="#">React Practice</Navbar.Brand>
+      </Navbar>
 
-        <strong className="heading"> Dynamic Text Binding </strong>
-        <p> Hello! <strong> {name} </strong></p>
-        <hr/>
- 
-        <strong className="heading"> Functional Component </strong>
-        <FunctionComponent />
+      <div className="row">
+        <div className="col-md-4">
+          <h4> Routing </h4>
+        </div>
+   
+        <div className="col-md-8">
+     
+          <strong className="heading"> Dynamic Text Binding </strong>
+          <p> Hello! <strong> {name} </strong></p>
+          <hr />
 
-        <strong className="heading"> Class Component </strong>
-        <ClassComponent />
-        <hr/>
+          <strong className="heading"> Functional Component </strong>
+          <FunctionComponent />
 
-        <strong className="heading"> Anonymous Function </strong> <br/>
-        {AnonymousFunction("data title", "data description")}
-        <hr/>
+          <strong className="heading"> Class Component </strong>
+          <ClassComponent />
+          <hr />
 
-        <strong className="heading"> Functional Props </strong> <br/>
-        <FunctionalProps name="sagar" last="ninave" />
+          <strong className="heading"> Anonymous Function </strong> <br />
+          {AnonymousFunction("data title", "data description")}
+          <hr />
 
-        <strong className="heading"> Child Function Props </strong> <br/>
-        <FunctionalProps name="vishal" last="">
-          <span> user does not have last name </span> <br />
-          <span> user is VVIP </span> <br/>
-        </FunctionalProps> <br />
+          <strong className="heading"> Functional Props </strong> <br />
+          <FunctionalProps name="sagar" last="ninave" />
+          <strong className="heading"> Child Function Props </strong> <br />
+          <FunctionalProps name="vishal" last="">
+            <span> user does not have last name </span> <br />
+            <span> user is VVIP </span> <br />
+          </FunctionalProps> <br />
 
-        <strong className="heading"> Detailed Function Props </strong> <br/>
-        <FunctionDetailedProps/>
+          <strong className="heading"> Detailed Function Props </strong> <br />
+          <FunctionDetailedProps />
+          <strong className="heading"> Class Props </strong> <br />
+          <ClassProps first_name="Sagar" last_name="Ninave" />
+          <hr />
 
-        <strong className="heading"> Class Props </strong> <br/>
-        <ClassProps first_name="Sagar" last_name="Ninave"/>
-        <hr/>
+          <strong className="heading"> Events </strong> <br />
+          <Event />
+          <hr />
 
-        <strong className="heading"> Events </strong> <br/>
-        <Event/>
-        <hr/>
+          <strong className="heading"> Functional State </strong>
+          <FunctionalState />
+          <strong className="heading"> Class State </strong>
+          <ClassState />
+          <hr />
 
-        <strong className="heading"> Functional State </strong>
-        <FunctionalState/>
+          <strong className="heading"> Change Funmctional State Data </strong>
+          <ChangeFunctionalStateData />
+          <strong className="heading"> Change Class State Data </strong>
+          <ChangeClassStateData />
+          <hr />
 
-        <strong className="heading"> Class State </strong>
-        <ClassState/>
-        <hr/>
-        
-        <strong className="heading"> Change Funmctional State Data </strong>
-        <ChangeFunctionalStateData />
+          <strong className="heading"> Lifecycle </strong>
+          <ClassTimerLifecycle />
+          <ClassLifeCycle_A />
+          <ClassLifeCycle_C />
+          <ClassLifeCycle_D />
+          <FunctionalLifeCycle />
+          <ClassComponentWillUnmount />
+          <hr />
 
-        <strong className="heading"> Change Class State Data </strong>
-        <ChangeClassStateData />
-        <hr/>
+          <strong className="heading"> Funmctional Fragment  </strong>
+          <FunctionalFragment1 />
+          <FunctionalFragment2 />
+          <FunctionalFragment3 />
 
-        <strong className="heading"> Lifecycle </strong>
-        <ClassTimerLifecycle/>
-        <ClassLifeCycle_A/>
-        <ClassLifeCycle_C/>
-        <ClassLifeCycle_D/>
-        <FunctionalLifeCycle/>
-        <hr/>
+          <strong className="heading"> Funmctional Fragment  </strong>
+          <ClassFragment />
+          <hr />
 
-        <strong className="heading"> Funmctional Fragment  </strong>
-        <FunctionalFragment1/>
-        <FunctionalFragment2/>
-        <FunctionalFragment3/>
+          <strong className="heading"> Map Function  </strong>
+          <MapFunction />
+          <hr />
 
-        <strong className="heading"> Funmctional Fragment  </strong>
-        <ClassFragment/>
-        <hr/>
+          <strong className="heading"> CSS Stylesheet  </strong>
+          <Stylesheet value={true} />
+          <hr />
 
-        <strong className="heading"> Map Function  </strong>
-        <MapFunction/>
-        <hr/>
-        
-        <strong className="heading"> CSS Stylesheet  </strong>
-        <Stylesheet value={true}/>
-        <hr/>
+          <strong className="heading"> Functional Form </strong>
+          <FunctionalForm />
+          <strong className="heading"> Class Form </strong>
+          <ClassForm />
+          <FunctionalValidForm />
+          <hr />
 
-        <strong className="heading"> Functional Form </strong>
-        <FunctionalForm/>
-        <strong className="heading"> Class Form </strong>
-        <ClassForm/>
-        <FunctionalValidForm/>
-        <hr/>
+          <strong className="heading"> Routing</strong>
+          <Routing />
+          <hr />
 
-        <strong className="heading"> Routing</strong>
-        <Routing/>
-        <hr/>
+          <strong className="heading"> API Fetched </strong>
+          <FunctionalGetAPI />
+          <ClassGetAPI />
+          {/* <FunctionalPostAPI/> */}
+          <hr />
 
-        <strong className="heading"> API Fetched </strong>
-        <FunctionalGetAPI/>
-        <ClassGetAPI/>
-        <FunctionalPostAPI/>
-        <hr/>   
+        </div>
+      </div>
     </div>
   );
 }
