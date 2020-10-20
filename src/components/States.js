@@ -6,6 +6,7 @@ function FunctionalState(){
 
   return(
     <div>
+      <strong className="heading"> Functional State </strong>
       <p> Hello! {myState.first_name + " " + myState.last_name} </p>
     </div>
   )
@@ -25,6 +26,7 @@ export class ClassState extends React.Component{
   render(){
     return(
       <div>
+        <strong className="heading"> Class State </strong>
         <p> Hello! {this.state.first_name + " " + this.state.last_name}</p>
       </div>
     )

@@ -16,6 +16,7 @@ function ChangeFunctionalStateData(){
 
   return(
     <div>
+      <strong className="heading"> Change Funmctional State Data </strong>
       <p> Hello! <strong> {myState.first_name + " " + myState.last_name} </strong> </p>
       <button onClick={() => ChangeFunctionData("Sanket", "Wankhede")}> Change Text </button> <br/>
       <p> Hello! <strong> {name} </strong> </p>
@@ -47,6 +48,7 @@ export class ChangeClassStateData extends React.Component{
   render(){
     return(
       <div>
+        <strong className="heading"> Change Class State Data </strong>
         <p> Hello! <strong> {this.state.first_name + " " + this.state.last_name} </strong> </p>
         <button onClick={() => this.ChangeClassData("Sanket", "Wankhede")}> Change Text </button> <br/>
         <button onClick={() => this.setState({ count: this.state.count + 1 })}>

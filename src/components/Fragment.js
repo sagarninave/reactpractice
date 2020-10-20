@@ -3,7 +3,8 @@ import React, { Fragment } from 'react';
 function FunctionalFragment1(){
   return(
     <React.Fragment>
-      <p> Functional Fragment 1 </p>
+      <strong class="heading"> Functional Fragment 1 </strong>
+      <p> Inspect Element </p>
     </React.Fragment>
   )
 }
@@ -13,7 +14,8 @@ export default FunctionalFragment1;
 export function FunctionalFragment2(){
   return(
     <Fragment>
-      <p> Functional Fragment 2 </p>
+      <strong class="heading"> Functional Fragment 2 </strong>
+      <p> Inspect Element </p>
     </Fragment>
   )
 }
@@ -21,7 +23,8 @@ export function FunctionalFragment2(){
 export function FunctionalFragment3(){
   return(
     <>
-      <p> Functional Fragment 3 </p>
+      <strong class="heading"> Functional Fragment 3 </strong>
+      <p> Inspect Element </p>
     </>
   )
 }
@@ -31,7 +34,8 @@ export class ClassFragment extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <p> Class Fragment </p>
+        <strong class="heading"> Class Fragment </strong>
+        <p> Inspect Element </p>
       </React.Fragment>
     );
   }

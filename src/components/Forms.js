@@ -20,8 +20,9 @@ function FunctionalForm(){
 
   return(
     <form onSubmit={submitForm}>
-      <input type="text" placeholder="username" onChange={getUsername}></input>
-      <input type="password" placeholder="password" onChange={getPassword}></input>
+      <strong className="heading"> Functional Form </strong><br/>
+      <input type="text" placeholder="username" onChange={getUsername}></input><br/>
+      <input type="password" placeholder="password" onChange={getPassword}></input><br/>
       <button> Submit </button>
     </form>
   )
@@ -56,24 +57,16 @@ export class ClassForm extends React.Component{
   render(){
     return(
       <form onSubmit={this.submitForm}>
-        <input type="text" placeholder="username" onChange={this.getUsername}></input>
-        <input type="password" placeholder="password" onChange={this.getPassword}></input>
+        <strong className="heading"> Class Form </strong> <br/>
+        <input type="text" placeholder="username" onChange={this.getUsername}></input><br/>
+        <input type="password" placeholder="password" onChange={this.getPassword}></input><br/>
         <button> Submit </button>
       </form>
     )
   }
 }
 
-
-
-
-
-
-
-
-
-
-export function FunctionalValidForm(){
+export function FunctionalFormValidation(){
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -175,6 +168,8 @@ export function FunctionalValidForm(){
   return(
     <div>
       <form onSubmit={e => validateForm(e)}>
+        <strong className="heading"> Functional Form Validation </strong> <br/>
+
         <input placeholder="First Name *" ype="text" onChange={handleChange('firstName')} value={firstName} required /> 
         <br/> {firstNameError ? errorMessage : null} <br/>
 

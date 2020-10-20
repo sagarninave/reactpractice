@@ -20,6 +20,8 @@ function Stylesheet(props){
 
   return(
     <div>
+      <strong className="heading"> CSS Stylesheet  </strong>
+
       <p style={inline}>hello! sagar, i am in inline css class</p>
       <p className="normalCss">hello! sagar, i am in normal css class</p>
       <p className={"myFont myColor myText"}>hello! sagar, i am in multiple css class</p>

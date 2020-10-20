@@ -3,13 +3,23 @@ import React from 'react';
 function FunctionProps(props){
   return (
     <div>
+      <strong className="heading"> Functional Props </strong> <br />
       <p> Hello! <strong> {props.name + " " + props.last} </strong></p>
-      <em> <strong> {props.children} </strong> </em>
     </div>
   )
 }
 export default FunctionProps;
 
+
+export function FunctionChildProps(props){
+  return (
+    <div>
+      <strong className="heading"> Child Function Props </strong> <br />
+      <p> Hello! <strong> {props.name + " " + props.last} </strong></p>
+      <em> <strong> {props.children} </strong> </em>
+    </div>
+  )
+}
 
 // Detailed Props
 
@@ -49,6 +59,7 @@ export function FunctionDetailedProps() {
 
   return (
     <div className="Comment">
+      <strong className="heading"> Detailed Function Props </strong> <br />
       <UserInfo user={comment.author} />
       <div className="Comment-text">{comment.text}</div>
       <div className="Comment-date">
@@ -72,6 +83,7 @@ export class ClassProps extends React.Component{
   render(){
     return(
       <div>
+        <strong className="heading"> Class Props </strong> <br />
         <p> Hello! <strong> {this.state.first_name + " " + this.state.last_name} </strong> </p>
         <em> {this.state.today.toLocaleDateString()}</em>
       </div>

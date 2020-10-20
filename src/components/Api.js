@@ -18,23 +18,20 @@ function FunctionalGetAPI() {
   })
 
   return (
-    <div style={{ width: "100%", height: "200px", overflow: "scroll" }}>
-      <p> Functional API Fetched</p>
+    <div style={{ width: "100%", height: "80vh", overflow: "scroll" }}>
+      <strong className="heading"> Functional GET API Fetched </strong>
       <table style={{ textAlign: "left" }}>
         <tbody>
           {
             apiData ?
-              Object.values(apiData).map((ele, index) => {
-                return (
-                  <tr key={index}>
-                    <td> <strong>  User ID : </strong> {ele.userId} </td>
-                    <td> <strong> Title : </strong> {ele.title} </td>
-                  </tr>
-                )
-              }) : <strong> Loading... </strong>
-          }
-          {
-            error ? <em> <strong> API Error</strong> </em> : null
+            Object.values(apiData).map((ele, index) => {
+              return (
+                <tr key={index}>
+                  <td> <strong>  User ID : </strong> {ele.userId} </td>
+                  <td> <strong> Title : </strong> {ele.title} </td>
+                </tr>
+              )
+            }) : <strong> Loading... </strong>
           }
         </tbody>
       </table>
@@ -43,54 +40,6 @@ function FunctionalGetAPI() {
 }
 
 export default FunctionalGetAPI;
-
-export class ClassGetAPI extends React.Component {
-
-  constructor() {
-    super()
-    this.state = {
-      APIData: [],
-      Error: ""
-    }
-  }
-
-  componentDidMount() {
-    axios.get("https://jsonplaceholder.typicode.com/todos").then(
-      response => {
-        this.setState({ APIData: response.data });
-      })
-      .catch(error => {
-        this.setState({ Error: error })
-        console.log(error)
-      })
-  }
-
-  render() {
-    return (
-      <div style={{ width: "100%", height: "200px", overflow: "scroll" }}>
-        <p> Class API Fetched</p>
-        <table style={{ textAlign: "left" }}>
-          <tbody>
-            {
-              this.state.APIData ?
-                Object.values(this.state.APIData).map((ele, index) => {
-                  return (
-                    <tr key={index}>
-                      <td> <strong>  User ID : </strong> {ele.userId} </td>
-                      <td> <strong> Title : </strong> {ele.title} </td>
-                    </tr>
-                  )
-                }) : null
-            }
-            {
-              this.state.error ? <em> <strong> API Error </strong> </em> : null
-            }
-          </tbody>
-        </table>
-      </div>
-    )
-  }
-}
 
 export function FunctionalPostAPI() {
 
@@ -131,6 +80,7 @@ export function FunctionalPostAPI() {
 
   return (
     <div>
+      <strong className="heading"> Functional POST API Fetched </strong>
       <table>
         <tr>
           <td> {getAPIResponseData ? JSON.stringify(getAPIResponseData) : error}</td>
@@ -138,4 +88,52 @@ export function FunctionalPostAPI() {
       </table>
     </div>
   )
+}
+
+export class ClassGetAPI extends React.Component {
+
+  constructor() {
+    super()
+    this.state = {
+      APIData: [],
+      Error: ""
+    }
+  }
+
+  componentDidMount() {
+    axios.get("https://jsonplaceholder.typicode.com/todos")
+    .then(response => {
+        this.setState({ APIData: response.data });
+    })
+    .catch(error => {
+      this.setState({ Error: error })
+      console.log(error)
+    })
+  }
+
+  render() {
+    return (
+      <div style={{ width: "100%", height: "80vh", overflow: "scroll" }}>
+        <strong className="heading"> Class GET API Fetched </strong>
+        <table style={{ textAlign: "left" }}>
+          <tbody>
+            {
+              this.state.APIData ?
+              Object.values(this.state.APIData).map((ele, index) => {
+                return (
+                  <tr key={index}>
+                    <td> <strong>  User ID : </strong> {ele.userId} </td>
+                    <td> <strong> Title : </strong> {ele.title} </td>
+                  </tr>
+                )
+              }) : null
+            }
+            {
+              this.state.error ? <em> <strong> API Error </strong> </em> : null
+            }
+          </tbody>
+        </table>
+      </div>
+    )
+  }
 }

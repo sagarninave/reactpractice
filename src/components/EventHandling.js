@@ -53,6 +53,7 @@ function Event() {
 
   return (
     <div>
+      <strong className="heading"> Events </strong> <br />
       {age4(17)}
       {age5(18)}
       {age6(19)}

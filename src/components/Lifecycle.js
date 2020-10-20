@@ -1,6 +1,145 @@
 import React, { useState, useEffect } from 'react';
 
-class ClassTimerLifecycle extends React.Component {
+export class CompleteLifeCycleClass extends React.Component{
+
+  constructor(){
+    super()
+    this.state = {
+      number : 1
+    }
+    console.log("CompleteLifeCycle : constructor");
+  }
+
+  static getDerivedStateFromProps(props, state){
+    console.log("CompleteLifeCycle : getDerivedStateFromProps");
+    return null;
+  }
+
+  componentDidMount(){
+    console.log("CompleteLifeCycle : componentDidMount ", this.state.number)
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    console.log("CompleteLifeCycle : componentDidUpdate ", this.state.number);
+  }
+
+  componentWillUnmount(){
+    console.log("CompleteLifeCycle : componentWillUnmount");
+  }
+
+  render(){
+    console.log("CompleteLifeCycle : Render & Return");
+    return(
+      <div>
+        <strong className="heading"> Complete Class Lifecycle </strong>
+        <em> <br/> Look into console.log("Complete LifeCycle") </em> <br/>
+        <button onClick={() => this.setState({number : this.state.number + 1})}> 
+          Increment {this.state.number}
+        </button>
+      </div>
+    )
+  }
+}
+export default CompleteLifeCycleClass;
+
+export class NestedLifeCycleClass_ParentClass extends React.Component{
+
+  constructor(){
+    super()
+    this.state = {
+      number : 1
+    }
+    console.log("NestedLifeCycle : constructor");
+  }
+
+  static getDerivedStateFromProps(props, state){
+    console.log("NestedLifeCycle : getDerivedStateFromProps");
+    return null;
+  }
+
+  componentDidMount(){
+    console.log("NestedLifeCycle : componentDidMount", this.state.number)
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    console.log("NestedLifeCycle : componentDidMount ", this.state.number);
+  }
+
+  componentWillUnmount(){
+    console.log("NestedLifeCycle : componentWillUnmount");
+  }
+
+  render(){
+    console.log("NestedLifeCycle : Render & Return");
+    return(
+      <div>
+        <ChildClass/>
+        <strong className="heading"> Nested Class Lifecycle </strong>
+        <em> <br/> Look into console.log("Nested LifeCycle") </em> <br/>
+        <button onClick={() => this.setState({number : this.state.number + 1})}> 
+          Increment For Parent Component {this.state.number}
+        </button>
+      </div>
+    )
+  }
+}
+
+export class ChildClass extends React.Component{
+
+  constructor(){
+    super()
+
+    this.state={
+      number: 1
+    }
+    console.log("LifeCycle B : constructor");
+  }
+
+  static getDerivedStateFromProps(props, state){
+    console.log("LifeCycle B : getDerivedStateFromProps");
+  }
+
+  componentDidMount(){
+    console.log("LifeCycle B : componentDidMount ", this.state.number);
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    console.log("LifeCycle B : componentDidMount ", this.state.number);
+  }
+
+  componentWillUnmount(){
+    console.log("LifeCycle B : componentWillUnmount");
+  }
+
+  render(){
+    console.log("LifeCycle B : Render & Return");
+    return(
+      <div>
+        <em> Look into console.log("LifeCycle Class B") </em> <br/>
+        <button onClick={() => this.setState({number : this.state.number + 1})}> 
+          Increment For Child Component {this.state.number}
+        </button>
+      </div>
+    )
+  }
+}
+
+export class ClassComponentWillUnmount extends React.Component{
+
+  componentDidMount(){    
+    console.log("componentDidMount")
+  }  
+
+  componentWillUnmount(){    
+    console.log("componentWillUnmount")
+  }
+
+  render(){
+    return <p> Unmount component </p>
+  }
+}
+
+export class ClassTimerLifecycle extends React.Component {
   constructor() {
     super();
     this.state = {date: new Date()};
@@ -26,191 +165,11 @@ class ClassTimerLifecycle extends React.Component {
   render() {
     return (
       <div>
-        <p>Hello, world!</p>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <strong className="heading"> Clock Lifecycle </strong>
+        <p>Hello, Clock!</p>
+        <h2>Current Time {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
-  }
-}
-
-export default ClassTimerLifecycle;
-
-export class ClassLifeCycle_A extends React.Component{
-
-  constructor(){
-    super()
-
-    this.state={
-      name:""
-    }
-    console.log("LifeCycle A : constructor");
-  }
-
-  static getDerivedStateFromProps(props, state){
-    console.log("LifeCycle A : getDerivedStateFromProps");
-    return null;
-  }
-
-  componentDidMount(){
-    console.log("LifeCycle A : componentDidMount");
-  }
-
-  render(){
-    console.log("LifeCycle A : Render & Return");
-    return(
-      <div>
-        <ClassLifeCycle_B/>
-        <em> console.log("LifeCycle B : Render & Return") </em> <br/>
-      </div>
-    )
-  }
-}
-
-export class ClassLifeCycle_B extends React.Component{
-
-  constructor(){
-    super()
-
-    this.state={
-      name:""
-    }
-    console.log("LifeCycle B : constructor");
-  }
-
-  static getDerivedStateFromProps(props, state){
-    console.log("LifeCycle B : getDerivedStateFromProps");
-    return null;
-  }
-
-  componentDidMount(){
-    console.log("LifeCycle B : componentDidMount");
-  }
-
-  render(){
-    console.log("LifeCycle B : Render & Return");
-    return(
-      <div>
-        <em> console.log("LifeCycle B : Render & Return") </em> <br/>
-      </div>
-    )
-  }
-}
-
-export class ClassLifeCycle_C extends React.Component{
-
-  constructor(){
-    super()
-
-    this.state={
-      count: 0
-    }
-    console.log("constructor");
-  }
-
-  static getDerivedStateFromProps(props, state){
-    console.log("getDerivedStateFromProps");
-    return null;
-  }
-
-  componentDidMount(){
-    console.log("componentDidMount");
-  }
-
-  componentDidUpdate(prevProps, prevState){
-    console.log("componentDidMount");
-  }
-
-  Increase = () => {
-    this.setState({
-      count:this.state.count + 1
-    }); 
-  }  
-
-  render(){
-    console.log("Render & Return");
-    return(
-      <div>
-        <string> Count : {this.state.count}</string> <br/>
-        <button onClick={this.Increase}>Plus</button>
-      </div>
-    )
-  }
-}
-
-export class ClassLifeCycle_D extends React.Component {
-
-  constructor() {
-    super();
-    this.state = {
-      count: 0
-    };
-  }
-
-  componentDidMount(){    
-    document.title = `You clicked ${this.state.count} times`;  
-  }  
-
-  componentDidUpdate(){    
-    document.title = `You clicked ${this.state.count} times`;  
-  }
-  
-  render() {
-    return (
-      <div>
-        <TitleCount mycount={this.state.count}/>
-        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
-          You clicked {this.state.count} times        
-        </button>
-      </div>
-    );
-  }
-}
-
-
-export class ClassComponentWillUnmount extends React.Component{
-
-  componentDidMount(){    
-    console.log("componentDidMount Called in Unmount Compenent")
-  }  
-
-  componentWillUnmount(){    
-    console.log("componentWillUnmount Called in Unmount component")
-  }
-
-  render(){
-    return <p> Unmount component </p>
-  }
-}
-
-export class TitleCount extends React.Component{
-  constructor(props){
-    super(props)
-    this.state={
-      clickCount : 0
-    }
-  }
-
-  componentDidMount(){    
-    console.log("componentDidMount Called")
-  }  
-
-  static getDerivedStateFromProps(props, state){
-    console.log("old", state.clickCount)
-    console.log("new", props.mycount)
-  }
-
-  componentDidUpdate(){    
-    console.log("componentDidUpdate Called")
-  }
-
-  render(){
-    return(
-      <div>
-        <button onClick={() => this.setState({clickCount:this.state.clickCount + 1})}> 
-          Click Count : {this.state.clickCount}
-        </button>
-      </div>
-    )
   }
 }
 
@@ -224,7 +183,9 @@ export function FunctionalLifeCycle() {
 
   return (
     <div>
-      <button onClick={() => setCount(count + 1)}> You clicked Functional Lifrecycle {count} times </button>
+      <button onClick={() => setCount(count + 1)}> 
+        You clicked Functional Lifrecycle {count} times 
+      </button>
     </div>
   );
 }
