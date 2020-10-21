@@ -3,8 +3,6 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 
-
-
 // Components Imported
 import FunctionComponent, { ClassComponent } from './components/Components';
 import FunctionalProps, { FunctionChildProps, FunctionDetailedProps, ClassProps } from './components/Props'
@@ -20,6 +18,7 @@ import SimpleMapFunction, { MapFunctionWithJSX } from './components/MapFunction'
 import Stylesheet from './components/Stylesheet';
 import FunctionalForm, { ClassForm, FunctionalFormValidation } from './components/Forms';
 import FunctionalGetAPI, { ClassGetAPI, FunctionalPostAPI } from './components/Api';
+import UseRef from './components/UseRef';
 
 function App() {
 
@@ -31,9 +30,9 @@ function App() {
 
   const name = "Sagar"
   const dynamicContent = <div>
-                  <strong className="heading"> Dynamic Text Binding </strong> <br/> 
-                  <h1 style={{ display: "inline" }}> Hello! {name} </h1>
-                </div> 
+                          <strong className="heading"> Dynamic Text Binding </strong> <br/> 
+                          <h1 style={{ display: "inline" }}> Hello! {name} </h1>
+                        </div> 
 
   return (
     <div className="App container-fluid" style={{margin:0, padding:0}}>
@@ -77,6 +76,7 @@ function App() {
                 <li> <Link to="/functional_get_api"> Functional GET API </Link> </li>
                 <li> <Link to="/functional_post_api"> Functional POST API  </Link> </li>
                 <li> <Link to="/class_get_api"> Class GET API </Link> </li>
+                <li> <Link to="/use_ref"> Use Ref </Link> </li>
               </ul>
             </nav>
           </div>
@@ -117,7 +117,9 @@ function App() {
               <Route path="/class_form"> <ClassForm/> </Route>
               <Route path="/functional_get_api"> <FunctionalGetAPI/> </Route>
               <Route path="/functional_post_api"> <FunctionalPostAPI/> </Route>
-              <Route path="/class_get_api"> <ClassGetAPI/> </Route>
+              <Route path="/functional_post_api"> <FunctionalPostAPI/> </Route>
+              <Route path="/use_ref"> <UseRef/> </Route>
+              
             </Switch>
           </div>
         </Router>
