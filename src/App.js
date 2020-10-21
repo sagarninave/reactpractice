@@ -17,16 +17,13 @@ import FunctionalFragment1, { FunctionalFragment2, FunctionalFragment3, ClassFra
 import SimpleMapFunction, { MapFunctionWithJSX } from './components/MapFunction';
 import Stylesheet from './components/Stylesheet';
 import FunctionalForm, { ClassForm, FunctionalFormValidation } from './components/Forms';
-import FunctionalGetAPI, { ClassGetAPI, FunctionalPostAPI } from './components/Api';
+import FunctionalGetAPI, { FunctionalGetAPI_ByFetch, ClassGetAPI, FunctionalPostAPI } from './components/Api';
 import UseRef from './components/UseRef';
+// import ErrorBoundry from './components/ErrorBoundry';
+import ClassPureComponent from './components/PureComponent';
+import FunctionalMemo from './components/Memo';
 
 function App() {
-
-  const liStyle={
-    listStyleType:"none",
-    textAlign:"left",
-    marginTop:"20px"
-  }
 
   const name = "Sagar"
   const dynamicContent = <div>
@@ -40,11 +37,11 @@ function App() {
         <Navbar.Brand href="#">React Practice</Navbar.Brand>
       </Navbar>
 
-      <div className="row">
+      <div className="row" style={{margin:0, padding:0}}>
         <Router>
-          <div className="col-md-4" style={{height:"90vh", overflow:"scroll"}}>
+          <div className="col-md-4" style={{height:"90vh", overflowY:"scroll", paddingBottom:"10px"}}>
             <nav>
-              <ul style={liStyle}>
+              <ul style={{listStyleType:"none", textAlign:"left", marginTop:"20px"}}>
                 <li> <Link to="/"> Dynamic Text Binding </Link> </li>
                 <li> <Link to="/functional_component"> Functional Component </Link> </li>
                 <li> <Link to="/class_component"> Class Component </Link> </li>
@@ -73,14 +70,18 @@ function App() {
                 <li> <Link to="/functional_form"> Functional Form </Link> </li>
                 <li> <Link to="/functional_form_validation"> Functional Form Validation </Link> </li>
                 <li> <Link to="/class_form"> Class Form </Link> </li>
+                <li> <Link to="/functional_get_api_by_fetch"> Functional GET API By Fetch() </Link> </li>
                 <li> <Link to="/functional_get_api"> Functional GET API </Link> </li>
                 <li> <Link to="/functional_post_api"> Functional POST API  </Link> </li>
                 <li> <Link to="/class_get_api"> Class GET API </Link> </li>
                 <li> <Link to="/use_ref"> Use Ref </Link> </li>
+                <li> <Link to="/class_pure_component"> Class Pure Component </Link> </li>
+                <li> <Link to="/functional_memo"> Functional Memo </Link> </li>
               </ul>
             </nav>
           </div>
           <div className="col-md-8" style={{marginTop:"20px"}}>
+          {/* <ErrorBoundry> */}
             <Switch>
               <Route exact path="/"> {dynamicContent} </Route>
               <Route path="/functional_component"> <FunctionComponent/> </Route>
@@ -111,16 +112,19 @@ function App() {
               <Route path="/class_fragment"> <ClassFragment/> </Route>
               <Route path="/simple_map_function"> <SimpleMapFunction/> </Route>
               <Route path="/map_function_with_JSX"> <MapFunctionWithJSX/> </Route>
-              <Route path="/stylesheet"> <Stylesheet value={true}/> </Route>
+              <Route path="/stylesheet"> <Stylesheet value={true} name={"sagar"}/> </Route>
               <Route path="/functional_form"> <FunctionalForm/> </Route>
               <Route path="/functional_form_validation"> <FunctionalFormValidation/> </Route>
-              <Route path="/class_form"> <ClassForm/> </Route>
+              <Route path="/class_form"> <ClassForm/> </Route>functional_get_api_by_fetch
+              <Route path="/functional_get_api_by_fetch"> <FunctionalGetAPI_ByFetch/> </Route>
               <Route path="/functional_get_api"> <FunctionalGetAPI/> </Route>
               <Route path="/functional_post_api"> <FunctionalPostAPI/> </Route>
               <Route path="/functional_post_api"> <FunctionalPostAPI/> </Route>
               <Route path="/use_ref"> <UseRef/> </Route>
-              
+              <Route path="/class_pure_component"> <ClassPureComponent/> </Route>
+              <Route path="/functional_memo"> <FunctionalMemo/> </Route>
             </Switch>
+            {/* </ErrorBoundry> */}
           </div>
         </Router>
       </div>

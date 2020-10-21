@@ -1,6 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+export function FunctionalGetAPI_ByFetch() {
+
+  const [apiData, setAPIData] = useState([]);
+  const [error, setError] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos").then(
+      (response) => {
+        response.json().then(response => {
+          setAPIData(response);
+
+        })
+      })
+      .catch(error => {
+        console.log(error)
+        setError([error])
+      })
+  }, [])
+
+  return (
+    <div style={{ width: "100%", height: "80vh", overflow: "scroll" }}>
+      <strong className="heading"> Functional GET API Fetched </strong>
+      <table style={{ textAlign: "left" }}>
+        <tbody>
+          {
+            apiData ?
+            Object.values(apiData).map((ele, index) => {
+              return (
+                <tr key={index}>
+                  <td> <strong>  User ID : </strong> {ele.userId} </td>
+                  <td> <strong> Title : </strong> {ele.title} </td>
+                </tr>
+              )
+            }) : <strong> Loading... </strong>
+          }
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
 function FunctionalGetAPI() {
 
   const [apiData, setAPIData] = useState([]);
@@ -9,13 +50,13 @@ function FunctionalGetAPI() {
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/todos").then(
       response => {
-        setAPIData([...response.data]);
+        setAPIData(response.data);
       })
       .catch(error => {
         console.log(error)
         setError([error])
       })
-  })
+  }, [])
 
   return (
     <div style={{ width: "100%", height: "80vh", overflow: "scroll" }}>

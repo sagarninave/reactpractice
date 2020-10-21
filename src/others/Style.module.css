@@ -6,3 +6,13 @@
 .style2{
   font-weight: bolder;
 }
+
+.conditionalStyle1{
+  color:white;
+  background-color: red;
+}
+
+.conditionalStyle2{
+  color:white;
+  background-color: green;
+}

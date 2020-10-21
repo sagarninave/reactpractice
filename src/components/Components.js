@@ -11,7 +11,6 @@ function FunctionComponent(){
 
 export default FunctionComponent;
 
-
 export class ClassComponent extends React.Component{
   render(){
     return(

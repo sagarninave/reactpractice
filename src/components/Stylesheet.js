@@ -30,6 +30,9 @@ function Stylesheet(props){
       <p className={importedClass}>hello! sagar, i am in imported classname css styled</p>
       <p className={dictClass}>hello! sagar, i am in object classname css styled</p>
       <p className={Style.style1}>hello! sagar, i am in css style module </p>
+      <p className={props.name == "sagar" ? Style.conditionalStyle1 : Style.conditionalStyle2}> Hello! Sagar i am in conditional match css class </p>
+      <p className={props.name != "sagar" ? Style.conditionalStyle1 : Style.conditionalStyle2}> Hello! Sagar i am in conditional match css class </p>
+
     </div>
   )
 }

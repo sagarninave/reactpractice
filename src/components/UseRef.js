@@ -4,19 +4,24 @@ class UseRef extends React.Component{
 
   constructor(){
     super()
+    this.state={
+      promoCode : 124647
+    }
     this.userRef = React.createRef();
   }
 
   Value(){
-    this.userRef.current.value="1000";
-    // console.log(this.userRef.current.value="1000");
+    // console.log(this.userRef)
+    this.userRef.current.value = this.state.promoCode;
+    // this.userRef.current.focus();
   }
 
   render(){
     return(
       <div>
-          <input type="text" ref={this.UserRef}/>
-          <button onClick={() => this.Value()}> Click Me </button>
+          <input ref={this.userRef} type="text" placeholder="Promo Code" autoFocus/> <br/>
+          <span> Promo Code : {this.state.promoCode}</span> <br/>
+          <button onClick={() => this.Value()}> Apply Promo Code </button>
       </div>
     )
   }
