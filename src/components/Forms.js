@@ -2,6 +2,10 @@ import React , { useState } from "react";
 
 function FunctionalForm(){
 
+  //Note : values are not gatting directly from HTML element, 
+  //       it is fetting throuth states so that it is called Controlled Component
+  //       Look into UseRef.js file to check Uncontrolled Component 
+
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 

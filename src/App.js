@@ -18,7 +18,7 @@ import SimpleMapFunction, { MapFunctionWithJSX } from './components/MapFunction'
 import Stylesheet from './components/Stylesheet';
 import FunctionalForm, { ClassForm, FunctionalFormValidation } from './components/Forms';
 import FunctionalGetAPI, { FunctionalGetAPI_ByFetch, ClassGetAPI, FunctionalPostAPI } from './components/Api';
-import UseRef from './components/UseRef';
+import UseRef, { UncontrolledComponent } from './components/UseRef';
 // import ErrorBoundry from './components/ErrorBoundry';
 import ClassPureComponent from './components/PureComponent';
 import FunctionalMemo from './components/Memo';
@@ -77,6 +77,8 @@ function App() {
                 <li> <Link to="/use_ref"> Use Ref </Link> </li>
                 <li> <Link to="/class_pure_component"> Class Pure Component </Link> </li>
                 <li> <Link to="/functional_memo"> Functional Memo </Link> </li>
+                <li> <Link to="/uncontrolled_component"> Uncontrolled Component </Link> </li>
+                
               </ul>
             </nav>
           </div>
@@ -123,6 +125,8 @@ function App() {
               <Route path="/use_ref"> <UseRef/> </Route>
               <Route path="/class_pure_component"> <ClassPureComponent/> </Route>
               <Route path="/functional_memo"> <FunctionalMemo/> </Route>
+              <Route path="/uncontrolled_component"> <UncontrolledComponent/> </Route>
+              
             </Switch>
             {/* </ErrorBoundry> */}
           </div>
