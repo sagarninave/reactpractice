@@ -23,6 +23,7 @@ import UseRef, { UncontrolledComponent } from './components/UseRef';
 import ClassPureComponent from './components/PureComponent';
 import FunctionalMemo from './components/Memo';
 import LazyLoading from './components/LazyLoading';
+import PropsTypeCheking from './components/PropsTypeCheking';
 
 function App() {
 
@@ -80,6 +81,8 @@ function App() {
                 <li> <Link to="/functional_memo"> Functional Memo </Link> </li>
                 <li> <Link to="/uncontrolled_component"> Uncontrolled Component </Link> </li>
                 <li> <Link to="/lazy_loading"> Lazy Loading </Link> </li>
+                <li> <Link to="/props_type_cheking"> Props Type Cheking </Link> </li>
+                
               </ul>
             </nav>
           </div>
@@ -128,6 +131,9 @@ function App() {
               <Route path="/functional_memo"> <FunctionalMemo/> </Route>
               <Route path="/uncontrolled_component"> <UncontrolledComponent/> </Route>
               <Route path="/lazy_loading"> <LazyLoading/> </Route>
+              <Route path="/props_type_cheking"> <PropsTypeCheking/> </Route>
+
+              
             </Switch>
             {/* </ErrorBoundry> */}
           </div>
