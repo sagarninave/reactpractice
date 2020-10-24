@@ -22,6 +22,7 @@ import UseRef, { UncontrolledComponent } from './components/UseRef';
 // import ErrorBoundry from './components/ErrorBoundry';
 import ClassPureComponent from './components/PureComponent';
 import FunctionalMemo from './components/Memo';
+import LazyLoading from './components/LazyLoading';
 
 function App() {
 
@@ -78,7 +79,7 @@ function App() {
                 <li> <Link to="/class_pure_component"> Class Pure Component </Link> </li>
                 <li> <Link to="/functional_memo"> Functional Memo </Link> </li>
                 <li> <Link to="/uncontrolled_component"> Uncontrolled Component </Link> </li>
-                
+                <li> <Link to="/lazy_loading"> Lazy Loading </Link> </li>
               </ul>
             </nav>
           </div>
@@ -126,7 +127,7 @@ function App() {
               <Route path="/class_pure_component"> <ClassPureComponent/> </Route>
               <Route path="/functional_memo"> <FunctionalMemo/> </Route>
               <Route path="/uncontrolled_component"> <UncontrolledComponent/> </Route>
-              
+              <Route path="/lazy_loading"> <LazyLoading/> </Route>
             </Switch>
             {/* </ErrorBoundry> */}
           </div>
