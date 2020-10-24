@@ -24,6 +24,7 @@ import ClassPureComponent from './components/PureComponent';
 import FunctionalMemo from './components/Memo';
 import LazyLoading from './components/LazyLoading';
 import PropsTypeCheking from './components/PropsTypeCheking';
+import CustomHook from './components/CustomHook';
 
 function App() {
 
@@ -82,7 +83,7 @@ function App() {
                 <li> <Link to="/uncontrolled_component"> Uncontrolled Component </Link> </li>
                 <li> <Link to="/lazy_loading"> Lazy Loading </Link> </li>
                 <li> <Link to="/props_type_cheking"> Props Type Cheking </Link> </li>
-                
+                <li> <Link to="/custom_hook"> Custom Hook </Link> </li>
               </ul>
             </nav>
           </div>
@@ -132,8 +133,7 @@ function App() {
               <Route path="/uncontrolled_component"> <UncontrolledComponent/> </Route>
               <Route path="/lazy_loading"> <LazyLoading/> </Route>
               <Route path="/props_type_cheking"> <PropsTypeCheking/> </Route>
-
-              
+              <Route path="/custom_hook"> <CustomHook/> </Route>
             </Switch>
             {/* </ErrorBoundry> */}
           </div>
