@@ -7,7 +7,7 @@ export function FunctionalGetAPI_ByFetch() {
   const [error, setError] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos").then(
+    fetch("http://localhost:3030/todo").then(
       (response) => {
         response.json().then(response => {
           setAPIData(response);
@@ -50,7 +50,7 @@ function FunctionalGetAPI() {
   const [error, setError] = useState([]);
 
   useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/todos").then(
+    axios.get("http://localhost:3030/todo").then(
       response => {
         setAPIData(response.data);
       })
@@ -90,29 +90,15 @@ export default FunctionalGetAPI;
 export function FunctionalPostAPI() {
 
   const apiData = {
-    first_name: "dipak",
-    middle_name: "ashok",
-    last_name: "hedaoo",
-    email: "dipakheo0@gmail.com",
-    phone: "4578916021",
-    aadhar: "452814612300",
-    country: "India",
-    state: "Maharshtra",
-    city: "Nagpur",
-    constitucy: "Nagpur Central",
-    ward: "111",
-    landmark: "timki",
-    pincode: "440018",
-    gender: "male",
-    date_of_birth: "2020-03-10",
-    occupation_type: "job",
-    occupation_title: "finance"
+    userId:	2,
+    title: "Writing Code",
+    completed: false
   };
   const [getAPIResponseData, setGetAPIResponseData] = useState({});
   const [error, setError] = useState({});
 
   useEffect(() => {
-    axios.post("http://127.0.0.1:8000/account/register", apiData)
+    axios.post("http://localhost:3030/todo", apiData)
     .then(
       response => {
         console.log(response.data)
@@ -148,7 +134,7 @@ export class ClassGetAPI extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("https://jsonplaceholder.typicode.com/todos")
+    axios.get("http://localhost:3030/todo")
     .then(response => {
         this.setState({ APIData: response.data });
     })

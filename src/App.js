@@ -26,6 +26,7 @@ import LazyLoading from './components/LazyLoading';
 import PropsTypeCheking from './components/PropsTypeCheking';
 import CustomHook from './components/CustomHook';
 import FunctionalContext from './components/Context';
+import FontAwesome from './components/FontAwesome';
 
 function App() {
 
@@ -87,6 +88,7 @@ function App() {
                 <li> <Link to="/props_type_cheking"> Props Type Cheking </Link> </li>
                 <li> <Link to="/custom_hook"> Custom Hook </Link> </li>
                 <li> <Link to="/functional_context"> Functional Context </Link> </li>
+                <li> <Link to="/font_awesome"> Font Awesome </Link> </li>
               </ul>
             </nav>
           </div>
@@ -139,6 +141,7 @@ function App() {
               <Route path="/props_type_cheking"> <PropsTypeCheking/> </Route>
               <Route path="/custom_hook"> <CustomHook/> </Route>
               <Route path="/functional_context"> <FunctionalContext/> </Route>
+              <Route path="/font_awesome"> <FontAwesome/> </Route>
             </Switch>
             {/* </ErrorBoundry> */}
           </div>
