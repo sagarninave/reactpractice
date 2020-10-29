@@ -11,12 +11,11 @@ export function FunctionalGetAPI_ByFetch() {
       (response) => {
         response.json().then(response => {
           setAPIData(response);
-
         })
       })
       .catch(error => {
         console.log(error)
-        setError([error])
+        setError(error)
       })
   }, [])
 
@@ -36,6 +35,9 @@ export function FunctionalGetAPI_ByFetch() {
               )
             }) : <strong> Loading... </strong>
           }
+          {
+            error ? <p> Something went wrong </p> : null
+          }
         </tbody>
       </table>
     </div>
@@ -54,7 +56,7 @@ function FunctionalGetAPI() {
       })
       .catch(error => {
         console.log(error)
-        setError([error])
+        setError(error)
       })
   }, [])
 
@@ -73,6 +75,9 @@ function FunctionalGetAPI() {
                 </tr>
               )
             }) : <strong> Loading... </strong>
+          }
+          {
+            error ? <p> Something went wrong </p> : null
           }
         </tbody>
       </table>
@@ -115,18 +120,19 @@ export function FunctionalPostAPI() {
     })
     .catch(error => {
       console.log(error)
-      setError([error])
+      setError(error)
     })
   }, [])
 
   return (
     <div>
-      <strong className="heading"> Functional POST API Fetched </strong>
-      <table>
-        <tr>
-          <td> {getAPIResponseData ? JSON.stringify(getAPIResponseData) : error}</td>
-        </tr>
-      </table>
+      <strong className="heading"> Functional POST API Fetched </strong> <br/>
+      {
+        getAPIResponseData ?  JSON.stringify(getAPIResponseData) : null
+      }
+      {
+        error ? <p> Something went wrong </p> : null
+      }
     </div>
   )
 }
@@ -167,10 +173,10 @@ export class ClassGetAPI extends React.Component {
                     <td> <strong> Title : </strong> {ele.title} </td>
                   </tr>
                 )
-              }) : null
+              }) : <em> Please wait... </em>
             }
             {
-              this.state.error ? <em> <strong> API Error </strong> </em> : null
+              this.state.error ? <em> Something went wrong </em> : null
             }
           </tbody>
         </table>

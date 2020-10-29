@@ -19,18 +19,38 @@ class UseRef extends React.Component{
   render(){
     return(
       <div>
-          <input ref={this.userRef} type="text" placeholder="Promo Code" autoFocus/> <br/>
-          <span> Promo Code : {this.state.promoCode}</span> <br/>
-          <button onClick={() => this.Value()}> Apply Promo Code </button>
+        <strong className="heading"> Use Ref </strong> <br/><br/>
+        <input ref={this.userRef} type="text" placeholder="Promo Code" autoFocus/> <br/>
+        <span> Promo Code : {this.state.promoCode}</span> <br/>
+        <button onClick={() => this.Value()}> Apply Promo Code </button>
       </div>
     )
   }
 }
-
 export default UseRef;
 
-export function UncontrolledComponent(){
+export const ForwordRefParent = () => {
+  const inputRef = React.createRef()
+  return(
+    <div>
+      <strong className="heading"> Forword Ref </strong><br/><br/>
+      <ForwordRedChild ref={inputRef}/> <br/>
+      <button onClick={()=>{inputRef.current.focus()}}> Focus </button> <br/>
+      <button onClick={()=>{inputRef.current.style.color = "red"}}> Color </button> <br/>
+      <button onClick={()=>{inputRef.current.style.backgroundColor = "yellow"}}> Background Color </button> <br/>
+    </div>
+  )
+}
 
+export const ForwordRedChild =  React.forwardRef((props, ref) => { 
+  return(
+    <div>
+      <input typle="text" ref={ref}/>
+    </div>
+  )
+})
+
+export function UncontrolledComponent(){
 
   //Note : values are gatting directly  from HTML element so that it is called uncontrolled component
 
@@ -58,7 +78,7 @@ export function UncontrolledComponent(){
 
   return(
     <form onSubmit={submitForm}>
-      <strong className="heading"> Functional Form </strong><br/>
+      <strong className="heading"> Uncontrolled Component </strong><br/><br/>
       <input type="text" placeholder="username" ref={usernameRef}></input><br/>
       <input type="password" placeholder="password" ref={passwordRef}></input><br/>
       <button> Submit </button>

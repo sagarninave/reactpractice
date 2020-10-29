@@ -8,6 +8,7 @@ function FunctionalMemo(){
 
   return(
     <div>
+      <strong className="heading"> Memo</strong> <br/>
       <FunctionalChildMemo data={childValue}/>
       <button onClick={()=>{setParentValue(parentValue+1)}}> Click Count : {parentValue}</button>
     </div>

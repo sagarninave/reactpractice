@@ -18,13 +18,14 @@ import SimpleMapFunction, { MapFunctionWithJSX } from './components/MapFunction'
 import Stylesheet from './components/Stylesheet';
 import FunctionalForm, { ClassForm, FunctionalFormValidation } from './components/Forms';
 import FunctionalGetAPI, { FunctionalGetAPI_ByFetch, ClassGetAPI, FunctionalPostAPI } from './components/Api';
-import UseRef, { UncontrolledComponent } from './components/UseRef';
+import UseRef, { ForwordRefParent, UncontrolledComponent } from './components/UseRef';
 // import ErrorBoundry from './components/ErrorBoundry';
 import ClassPureComponent from './components/PureComponent';
 import FunctionalMemo from './components/Memo';
 import LazyLoading from './components/LazyLoading';
 import PropsTypeCheking from './components/PropsTypeCheking';
 import CustomHook from './components/CustomHook';
+import FunctionalContext from './components/Context';
 
 function App() {
 
@@ -78,12 +79,14 @@ function App() {
                 <li> <Link to="/functional_post_api"> Functional POST API  </Link> </li>
                 <li> <Link to="/class_get_api"> Class GET API </Link> </li>
                 <li> <Link to="/use_ref"> Use Ref </Link> </li>
+                <li> <Link to="/forword_ref"> Forword Ref </Link> </li>
                 <li> <Link to="/class_pure_component"> Class Pure Component </Link> </li>
                 <li> <Link to="/functional_memo"> Functional Memo </Link> </li>
                 <li> <Link to="/uncontrolled_component"> Uncontrolled Component </Link> </li>
                 <li> <Link to="/lazy_loading"> Lazy Loading </Link> </li>
                 <li> <Link to="/props_type_cheking"> Props Type Cheking </Link> </li>
                 <li> <Link to="/custom_hook"> Custom Hook </Link> </li>
+                <li> <Link to="/functional_context"> Functional Context </Link> </li>
               </ul>
             </nav>
           </div>
@@ -128,12 +131,14 @@ function App() {
               <Route path="/functional_post_api"> <FunctionalPostAPI/> </Route>
               <Route path="/functional_post_api"> <FunctionalPostAPI/> </Route>
               <Route path="/use_ref"> <UseRef/> </Route>
+              <Route path="/forword_ref"> <ForwordRefParent/> </Route>
               <Route path="/class_pure_component"> <ClassPureComponent/> </Route>
               <Route path="/functional_memo"> <FunctionalMemo/> </Route>
               <Route path="/uncontrolled_component"> <UncontrolledComponent/> </Route>
               <Route path="/lazy_loading"> <LazyLoading/> </Route>
               <Route path="/props_type_cheking"> <PropsTypeCheking/> </Route>
               <Route path="/custom_hook"> <CustomHook/> </Route>
+              <Route path="/functional_context"> <FunctionalContext/> </Route>
             </Switch>
             {/* </ErrorBoundry> */}
           </div>

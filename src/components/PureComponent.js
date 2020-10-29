@@ -13,7 +13,8 @@ class ClassPureComponent extends React.Component{
     console.log(this.state)
     return(
       <div>
-        {this.state.number}
+        <strong className="heading"> Pure Component </strong> <br/>
+        {this.state.number} <br/>
         <button onClick={()=>{this.setState({number: 10})}}> Click Me </button>
       </div>
     )
