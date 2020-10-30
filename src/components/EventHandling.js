@@ -70,25 +70,3 @@ function Event() {
 }
 
 export default Event;
-
-
-// export class Toggle extends React.Component {
-  
-//   constructor() {
-//     super();
-//     this.state = {isToggleOn: true};
-//   }
-
-//   handleClick(){    
-//     this.setState({isToggleOn : !this.state.isToggleOn});  
-//   }
-
-//   render(){
-//     return (
-//       <button onClick={this.handleClick}>        
-//         {this.state.isToggleOn ? 'ON' : 'OFF'}
-//       </button>
-//     );
-//   }
-// }
-
