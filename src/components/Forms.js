@@ -3,7 +3,7 @@ import React , { useState } from "react";
 function FunctionalForm(){
 
   //Note : values are not gatting directly from HTML element, 
-  //       it is fetting throuth states so that it is called Controlled Component
+  //       it is getting throuth states so that it is called Controlled Component
   //       Look into UseRef.js file to check Uncontrolled Component 
 
   const [username, setUsername] = useState();
@@ -34,7 +34,6 @@ function FunctionalForm(){
 
 export default FunctionalForm;
 
-
 export class ClassForm extends React.Component{
 
   constructor(){
@@ -64,6 +63,49 @@ export class ClassForm extends React.Component{
         <strong className="heading"> Class Form </strong> <br/>
         <input type="text" placeholder="username" onChange={this.getUsername}></input><br/>
         <input type="password" placeholder="password" onChange={this.getPassword}></input><br/>
+        <button> Submit </button>
+      </form>
+    )
+  }
+}
+
+
+export class CommonInputHandleForm extends React.Component{
+
+  constructor(){
+    super()
+    this.state={
+      username:"",
+      email:"",
+      phone:"",
+      password:""
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState(
+      {
+        [event.target.id]:event.target.value
+      }
+    );
+  }
+
+  submitForm = (e) =>{
+    e.preventDefault();
+    console.log("Username : ", this.state.username);
+    console.log("Email : ", this.state.email);
+    console.log("Phone : ", this.state.phone);
+    console.log("Password : ", this.state.password);
+  }
+
+  render(){
+    return(
+      <form onSubmit={this.submitForm}>
+        <strong className="heading"> Common Input Field Handle Form </strong> <br/>
+        <input type="text" placeholder="username" id="username" onChange={this.handleChange}></input><br/>
+        <input type="email" placeholder="email" id="email" onChange={this.handleChange}></input><br/>
+        <input type="text" placeholder="phone" id="phone" onChange={this.handleChange}></input><br/>
+        <input type="password" placeholder="password" id="password" onChange={this.handleChange}></input><br/>
         <button> Submit </button>
       </form>
     )

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Link, Route, Redirect } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 
 // Components Imported
@@ -16,7 +16,7 @@ import Event from './components/EventHandling';
 import FunctionalFragment1, { FunctionalFragment2, FunctionalFragment3, ClassFragment } from './components/Fragment';
 import SimpleMapFunction, { MapFunctionWithJSX } from './components/MapFunction';
 import Stylesheet from './components/Stylesheet';
-import FunctionalForm, { ClassForm, FunctionalFormValidation } from './components/Forms';
+import FunctionalForm, { ClassForm, CommonInputHandleForm, FunctionalFormValidation } from './components/Forms';
 import FunctionalGetAPI, { FunctionalGetAPI_ByFetch, ClassGetAPI, FunctionalPostAPI } from './components/Api';
 import UseRef, { ForwordRefParent, UncontrolledComponent } from './components/UseRef';
 // import ErrorBoundry from './components/ErrorBoundry';
@@ -25,17 +25,29 @@ import FunctionalMemo from './components/Memo';
 import LazyLoading from './components/LazyLoading';
 import PropsTypeCheking from './components/PropsTypeCheking';
 import CustomHook from './components/CustomHook';
-import FunctionalContext from './components/Context';
-import FontAwesome from './components/FontAwesome';
+import SimpleContext from './components/Context1';
+import NestedContext from './components/Context2';
+import ParentContext from './components/Context3';
+// import FontAwesome from './components/FontAwesome';
+import FunctionAsProps from './components/FunctionAsProps';
 
 function App() {
+
+  const PageNotFound = () => {
+    return(
+      <div>
+        <h1> 404 </h1>
+        <p> Page Not Found</p>
+      </div>
+    )
+  }
 
   const name = "Sagar"
   const dynamicContent = <div>
                           <strong className="heading"> Dynamic Text Binding </strong> <br/> 
                           <h1 style={{ display: "inline" }}> Hello! {name} </h1>
                         </div> 
-
+  
   return (
     <div className="App container-fluid" style={{margin:0, padding:0}}>
       <Navbar bg="dark" variant="dark">
@@ -75,6 +87,7 @@ function App() {
                 <li> <Link to="/functional_form"> Functional Form </Link> </li>
                 <li> <Link to="/functional_form_validation"> Functional Form Validation </Link> </li>
                 <li> <Link to="/class_form"> Class Form </Link> </li>
+                <li> <Link to="/common_input_handle_form"> Common Input Field Handle Form </Link> </li>
                 <li> <Link to="/functional_get_api_by_fetch"> Functional GET API By Fetch() </Link> </li>
                 <li> <Link to="/functional_get_api"> Functional GET API </Link> </li>
                 <li> <Link to="/functional_post_api"> Functional POST API  </Link> </li>
@@ -87,8 +100,11 @@ function App() {
                 <li> <Link to="/lazy_loading"> Lazy Loading </Link> </li>
                 <li> <Link to="/props_type_cheking"> Props Type Cheking </Link> </li>
                 <li> <Link to="/custom_hook"> Custom Hook </Link> </li>
-                <li> <Link to="/functional_context"> Functional Context </Link> </li>
-                <li> <Link to="/font_awesome"> Font Awesome </Link> </li>
+                <li> <Link to="/simple_context"> Simple Context </Link> </li>
+                <li> <Link to="/nested_context"> Nested Context </Link> </li>
+                <li> <Link to="/use_context_method"> UseContext Method </Link> </li>
+                <li> <Link to="/function_as_props"> Function As Props </Link> </li>
+                {/* <li> <Link to="/font_awesome"> Font Awesome </Link> </li> */}
               </ul>
             </nav>
           </div>
@@ -127,7 +143,8 @@ function App() {
               <Route path="/stylesheet"> <Stylesheet value={true} name={"sagar"}/> </Route>
               <Route path="/functional_form"> <FunctionalForm/> </Route>
               <Route path="/functional_form_validation"> <FunctionalFormValidation/> </Route>
-              <Route path="/class_form"> <ClassForm/> </Route>functional_get_api_by_fetch
+              <Route path="/class_form"> <ClassForm/> </Route>
+              <Route path="/common_input_handle_form"> <CommonInputHandleForm/> </Route>
               <Route path="/functional_get_api_by_fetch"> <FunctionalGetAPI_ByFetch/> </Route>
               <Route path="/functional_get_api"> <FunctionalGetAPI/> </Route>
               <Route path="/functional_post_api"> <FunctionalPostAPI/> </Route>
@@ -140,8 +157,15 @@ function App() {
               <Route path="/lazy_loading"> <LazyLoading/> </Route>
               <Route path="/props_type_cheking"> <PropsTypeCheking/> </Route>
               <Route path="/custom_hook"> <CustomHook/> </Route>
-              <Route path="/functional_context"> <FunctionalContext/> </Route>
-              <Route path="/font_awesome"> <FontAwesome/> </Route>
+              <Route path="/simple_context"> <SimpleContext/> </Route>
+              <Route path="/nested_context"> <NestedContext/> </Route>
+              <Route path="/use_context_method"> <ParentContext/> </Route>
+              <Route path="/function_as_props"> <FunctionAsProps/> </Route>
+              {/* <Route path="/font_awesome"> <FontAwesome/> </Route> */}
+
+              <Route path="/404"> <PageNotFound/> </Route>
+              <Redirect to="/404"/>
+
             </Switch>
             {/* </ErrorBoundry> */}
           </div>

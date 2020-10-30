@@ -12,11 +12,20 @@ export default FunctionProps;
 
 
 export function FunctionChildProps(props){
+
+  // Destructuring Props 
+  const { name, last, children} = props;
+
   return (
     <div>
       <strong className="heading"> Child Function Props </strong> <br />
       <p> Hello! <strong> {props.name + " " + props.last} </strong></p>
       <em> <strong> {props.children} </strong> </em>
+
+      {/* Destructuring Props  */}
+      <br/><strong className="heading"> Destructuring Props </strong> <br/>
+      <p> Hello! <strong> {name + " " + last} </strong></p>
+      <em> <strong> {children} </strong> </em>
     </div>
   )
 }
