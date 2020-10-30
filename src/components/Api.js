@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
 
 export function FunctionalGetAPI_ByFetch() {
 
@@ -70,7 +71,7 @@ function FunctionalGetAPI() {
             Object.values(apiData).map((ele, index) => {
               return (
                 <tr key={index}>
-                  <td> <strong>  User ID : </strong> {ele.userId} </td>
+                  <td> <strong>  User ID : </strong> {index + 1} </td>
                   <td> <strong> Title : </strong> {ele.title} </td>
                 </tr>
               )
