@@ -1,15 +1,11 @@
 import React, { memo } from 'react';
 
 function FunctionalChildMemo(props){
-
-  console.log(props.data);
+  console.log("Memo Child : ", props.number);
   return(
     <div>
-      <span> Child Value : {props.data}</span>
+      <span> Child Value : {props.number}</span>
     </div>
   )
 }
-
-// export default FunctionalChildMemo; 
-
 export default memo(FunctionalChildMemo); 

@@ -1,7 +1,7 @@
 import React, { PureComponent} from 'react';
 
-class ClassPureComponent extends React.Component{
-
+class PureComponentExample extends React.Component{
+  
   constructor(){
     super()
     this.state = {
@@ -10,15 +10,49 @@ class ClassPureComponent extends React.Component{
   }
 
   render(){
-    console.log(this.state)
+    console.log("Pure Component Example : ", this.state.number);
     return(
       <div>
         <strong className="heading"> Pure Component </strong> <br/>
-        {this.state.number} <br/>
-        <button onClick={()=>{this.setState({number: 10})}}> Click Me </button>
+        <button onClick={()=>{this.setState({number: this.state.number})}}> Click Me {this.state.number}</button>
+        <PureComponentClass number={this.state.number}/>
+        <RegularComponentClass number={this.state.number}/>
+      </div>
+    )
+  }
+}
+export default PureComponentExample;
+
+export class PureComponentClass extends PureComponent{
+
+  constructor(props){
+    super(props)
+  }
+
+  render(){
+    console.log("Pure Component : ", this.props.number);
+    return(
+      <div>
+        <strong> Pure Component Class </strong> <br/>
+        Number : {this.props.number} <br/>
       </div>
     )
   }
 }
 
-export default ClassPureComponent;
+export class RegularComponentClass extends PureComponent{
+
+  constructor(props){
+    super(props)
+  }
+
+  render(){
+    console.log("Regular Component : ", this.props.number);
+    return(
+      <div>
+        <strong> Regular Component Class </strong> <br/>
+        Number : {this.props.number} <br/>
+      </div>
+    )
+  }
+}
