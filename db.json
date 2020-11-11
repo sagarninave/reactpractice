@@ -16,6 +16,17 @@
   "profile": {
     "name": "typicode"
   },
+  "users": [
+    {
+      "first_name":"sagar", 
+      "last_name":"ninave", 
+      "email":"sagarninav2@gmail.com", 
+      "mobile":"9657445206", 
+      "dob":"", 
+      "gender":"male", 
+      "password":"0012"
+    }
+  ],
   "todo": [
     {
       "userId": 1,

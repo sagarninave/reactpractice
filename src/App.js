@@ -19,7 +19,7 @@ import Stylesheet from './components/Stylesheet';
 import FunctionalForm, { ClassForm, CommonInputHandleForm, FunctionalFormValidation } from './components/Forms';
 import FunctionalGetAPI, { FunctionalGetAPI_ByFetch, ClassGetAPI, FunctionalPostAPI } from './components/Api';
 import UseRef, { ForwordRefParent, UncontrolledComponent } from './components/UseRef';
-// import ErrorBoundry from './components/ErrorBoundry';
+import ErrorBoundry, { ErrorFunction } from './components/ErrorBoundry';
 import ClassPureComponent from './components/PureComponent';
 import FunctionalMemo from './components/Memo';
 import LazyLoading from './components/LazyLoading';
@@ -30,6 +30,8 @@ import NestedContext from './components/Context2';
 import ParentContext from './components/Context3';
 // import FontAwesome from './components/FontAwesome';
 import FunctionAsProps from './components/FunctionAsProps';
+import Portal from './components/Portal';
+import Create from './components/CRUD';
 
 function App() {
 
@@ -88,6 +90,7 @@ function App() {
                 <li> <Link to="/functional_form_validation"> Functional Form Validation </Link> </li>
                 <li> <Link to="/class_form"> Class Form </Link> </li>
                 <li> <Link to="/common_input_handle_form"> Common Input Field Handle Form </Link> </li>
+                <li> <Link to="/create_user"> CRUD </Link> </li>
                 <li> <Link to="/functional_get_api_by_fetch"> Functional GET API By Fetch() </Link> </li>
                 <li> <Link to="/functional_get_api"> Functional GET API </Link> </li>
                 <li> <Link to="/functional_post_api"> Functional POST API  </Link> </li>
@@ -104,12 +107,14 @@ function App() {
                 <li> <Link to="/nested_context"> Nested Context </Link> </li>
                 <li> <Link to="/use_context_method"> UseContext Method </Link> </li>
                 <li> <Link to="/function_as_props"> Function As Props </Link> </li>
+                <li> <Link to="/portal"> Portal </Link> </li>
+                <li> <Link to="/error_boundry"> Error Boundry </Link> </li>
                 {/* <li> <Link to="/font_awesome"> Font Awesome </Link> </li> */}
               </ul>
             </nav>
           </div>
           <div className="col-md-8" style={{marginTop:"20px"}}>
-          {/* <ErrorBoundry> */}
+          <ErrorBoundry>
             <Switch>
               <Route exact path="/"> {dynamicContent} </Route>
               <Route path="/functional_component"> <FunctionComponent/> </Route>
@@ -145,6 +150,7 @@ function App() {
               <Route path="/functional_form_validation"> <FunctionalFormValidation/> </Route>
               <Route path="/class_form"> <ClassForm/> </Route>
               <Route path="/common_input_handle_form"> <CommonInputHandleForm/> </Route>
+              <Route path="/create_user"> <Create/> </Route>
               <Route path="/functional_get_api_by_fetch"> <FunctionalGetAPI_ByFetch/> </Route>
               <Route path="/functional_get_api"> <FunctionalGetAPI/> </Route>
               <Route path="/functional_post_api"> <FunctionalPostAPI/> </Route>
@@ -161,13 +167,15 @@ function App() {
               <Route path="/nested_context"> <NestedContext/> </Route>
               <Route path="/use_context_method"> <ParentContext/> </Route>
               <Route path="/function_as_props"> <FunctionAsProps/> </Route>
+              <Route path="/portal"> <Portal/> </Route>
+              <Route path="/error_boundry"> <ErrorFunction/> </Route>
               {/* <Route path="/font_awesome"> <FontAwesome/> </Route> */}
 
               <Route path="/404"> <PageNotFound/> </Route>
               <Redirect to="/404"/>
 
             </Switch>
-            {/* </ErrorBoundry> */}
+            </ErrorBoundry>
           </div>
         </Router>
       </div>
