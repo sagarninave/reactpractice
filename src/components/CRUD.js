@@ -10,7 +10,16 @@ function Create(){
   // const [dob, set_dob] = useState();
   // const [gender, set_gender] = useState();
   // const [password, set_password] = useState();
-  const [value, setValue] = useState({first_name:"", last_name:"", email:"", mobile:"", dob:"", gender:"", password:""});
+  const [value, setValue] = useState({
+    first_name:"", 
+    last_name:"", 
+    email:"", 
+    mobile:"", 
+    dob:"", 
+    gender:"", 
+    password:""
+  });
+  const [submitResponse, set_submitResponse] = useState();
 
   const handleInput = (e) => {
     if(e.target.name === "first_name"){
@@ -43,15 +52,16 @@ function Create(){
     try{
       axios({
         method: 'post',
-        url: 'http://localhost/user/',
+        url: 'http://localhost:3030/user/',
         data: value,
         headers : {"Access-Control-Allow-Origin": "*"}
       }).then(response => {
         console.log("Response : ", response);
+        set_submitResponse(response);
       })    
     }
     catch(e){
-      console.log(error);
+      console.log(e);
     }
   }
 
@@ -60,6 +70,13 @@ function Create(){
       <strong className="heading"> CRUD Operation </strong>
       <div className="row">
         <div className="col-md-8 offset-md-2">
+          {
+            submitResponse && 
+            <p>
+              <span> Record save successfully </span>
+              {submitResponse}
+            </p>
+          }
           <form className="form-group" onSubmit={submitForm}>
             <br/><input type="text" name="first_name" placeholder="First Name" onChange={handleInput} className="form-input"></input>
             <br/><input type="text" name="last_name" placeholder="Last Name" onChange={handleInput} className="form-input"></input>
