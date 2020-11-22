@@ -20,11 +20,20 @@
     {
       "first_name": "sagar",
       "last_name": "ninave",
-      "email": "sagarninave@gmail.com",
+      "email": "sagarninave1996@gmail.com",
       "mobile": "9657445206",
       "dob": "1996-08-06",
       "gender": "male",
       "id": 1
+    },
+    {
+      "first_name": "sanket ",
+      "last_name": "wankhede",
+      "email": "sanketwankhede2020@gmail.com",
+      "mobile": "1647896515",
+      "dob": "2008-10-21",
+      "gender": "male",
+      "id": 2
     }
   ],
   "todo": []

@@ -196,89 +196,133 @@ function CRUD(){
   }
 
   return(
-    <div className="container">
+    <div className="container-fluid" style={{margin:"0px", padding:"0px"}}>
       <strong className="heading"> CRUD Operation </strong>
       <div>
-        <button onClick={showUserView}> Show Users</button>
-        <button onClick={createUserView}> Create User</button>
+        <button className="btn btn-primary mr-2 mt-2" onClick={showUserView}> Show Users</button>
+        <button className="btn btn-primary ml-2 mt-2" onClick={createUserView}> Create User</button>
       </div>
       { isShowUser && 
-        <div className="row" style={{margin:"0px", padding:"0px"}}>
-          <div className="col-md-12" style={{margin:"0px", padding:"0px"}}>
-            <div className="row" style={{margin:"0px", padding:"0px"}}>
-              <div className="col-md-1" style={{margin:"0px", padding:"0px"}}> ID </div>
-              <div className="col-md-1" style={{margin:"0px", padding:"0px"}}> Fname </div>
-              <div className="col-md-1" style={{margin:"0px", padding:"0px"}}> Lname </div>
-              <div className="col-md-2" style={{margin:"0px", padding:"0px"}}> Email </div>
-              <div className="col-md-2" style={{margin:"0px", padding:"0px"}}> Mobile </div>
-              <div className="col-md-2" style={{margin:"0px", padding:"0px"}}> DoB </div>
-              <div className="col-md-1" style={{margin:"0px", padding:"0px"}}> Gender </div>
-              <div className="col-md-2" style={{margin:"0px", padding:"0px"}}> Action </div>
-            </div>
-            { allUsers ?
+        <table class="table table-hover table-dark" style={{marginTop:"20px"}}>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">DoB</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            { 
+              allUsers &&
               Object.values(allUsers).map((user, index) => {
                 return(
-                  <div className="row" key={index}>
-                    <div className="col-md-1" style={{margin:"0px", padding:"0px"}}> {user.id} </div>
-                    <div className="col-md-1" style={{margin:"0px", padding:"0px"}}> {user.first_name} </div>
-                    <div className="col-md-1" style={{margin:"0px", padding:"0px"}}> {user.last_name} </div>
-                    <div className="col-md-2" style={{margin:"0px", padding:"0px"}}> {user.email} </div>
-                    <div className="col-md-2" style={{margin:"0px", padding:"0px"}}> {user.mobile} </div>
-                    <div className="col-md-2" style={{margin:"0px", padding:"0px"}}> {user.dob} </div>
-                    <div className="col-md-1" style={{margin:"0px", padding:"0px"}}> {user.gender} </div>
-                    <div className="col-md-2" style={{margin:"0px", padding:"0px"}}>             
-                      <FontAwesomeIcon style={myStyle, {color:"green", marginRight:"10px"}} onClick={()=>editUserView(user.id)} icon={faEdit}/> 
-                      <FontAwesomeIcon style={myStyle, {color:"red"}} icon={faTrash} onClick={()=>deleteUser(user.id)}/> 
-                    </div>
-                  </div>
+                  <tr>
+                    <td>{user.id}</td>
+                    <td>{user.first_name}</td>
+                    <td>{user.last_name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.mobile}</td>
+                    <td>{user.dob}</td>
+                    <td>{user.gender}</td>
+                    <td>
+                      <FontAwesomeIcon 
+                        style={myStyle, {color:"green", marginRight:"10px"}} 
+                        data-toggle="tooltip" data-placement="top" title="Edit" 
+                        onClick={()=>editUserView(user.id)} icon={faEdit}
+                      /> 
+                      <FontAwesomeIcon 
+                        style={myStyle, {color:"red"}} icon={faTrash}
+                        data-toggle="tooltip" data-placement="top" title="Delete" 
+                        onClick={()=>deleteUser(user.id)}
+                      /> 
+                    </td>
+                  </tr>
                 )
-              }) : <p style={{marginTop:"100px", color:"blue", fontWeight:"bolder", fontSize:"30px"}}> Please Wait ... !</p>
+              }) 
             }
-          </div>
-        </div> 
+          </tbody>
+        </table>
       }
-      
       {
         isCreateUser &&
         <div className="row">
-          <div className="col-md-8 offset-md-2">
-            <h3 style={{marginTop:'20px', marginBop: '20px'}}> Create User </h3>
-            <form className="form-group" onSubmit={submitForm}>
-              <br/><input type="text" name="first_name" placeholder="First Name" onChange={handleInput} className="form-input"></input>
-              <br/><input type="text" name="last_name" placeholder="Last Name" onChange={handleInput} className="form-input"></input>
-              <br/><input type="email" name="email" placeholder="Email" onChange={handleInput} className="form-input"></input>
-              <br/><input type="text" name="mobile" placeholder="Mobile" onChange={handleInput} className="form-input"></input>
-              <br/><input type="date" name="dob" placeholder="dob" onChange={handleInput} className="form-input"></input>
-              <br/><select name="gender" onChange={handleInput}>
-                <option> Gender </option>
-                <option value="male"> Male </option>
-                <option value="female"> Female </option>
-              </select>
-              <br/><button> Create </button>
+          <div className="col-md-4 offset-md-4">
+            <form 
+              onSubmit={submitForm} 
+              style={{border:"1px solid gray", marginTop:"20px", padding:"20px", borderRadius:"5px"}}
+            >
+              <div className="form-group">
+                <input type="text" name="first_name" placeholder="First Name" onChange={handleInput} className="form-control"></input>
+              </div>
+              <div className="form-group">
+                <input type="text" name="last_name" placeholder="Last Name" onChange={handleInput} className="form-control"></input>
+              </div>
+              <div className="form-group">
+                <input type="email" name="email" placeholder="Email" onChange={handleInput} className="form-control"></input>
+              </div>
+              <div className="form-group">
+                <input type="text" name="mobile" placeholder="Mobile" onChange={handleInput} className="form-control"></input>
+              </div>
+              <div className="form-group">
+                <input type="date" name="dob" placeholder="dob" onChange={handleInput} className="form-control"></input>
+              </div>
+              <div className="form-group">
+                <select name="gender"className="form-control" onChange={handleInput}>
+                  <option> Gender </option>
+                  <option value="male"> Male </option>
+                  <option value="female"> Female </option>
+               </select>              
+              </div>
+              <button type="submit" className="btn btn-primary form-control">Submit</button>
             </form>
-          </div> 
+          </div>
         </div>
       }
 
       {
         isEditUser &&
         <div className="row">
-          <div className="col-md-8 offset-md-2">
-            <h3 style={{marginTop:'20px', marginBottom: '0'}}> Edit User </h3>
-            <form className="form-group" onSubmit={userEditForm}>
-              <br/><input type="text" name="first_name" placeholder="First Name" value={editUserValue.first_name} onChange={handleEditInput} className="form-input"></input>
-              <br/><input type="text" name="last_name" placeholder="Last Name" value={editUserValue.last_name} onChange={handleEditInput} className="form-input"></input>
-              <br/><input type="email" name="email" placeholder="Email" value={editUserValue.email} onChange={handleEditInput} className="form-input"></input>
-              <br/><input type="text" name="mobile" placeholder="Mobile" value={editUserValue.mobile} onChange={handleEditInput} className="form-input"></input>
-              <br/><input type="date" name="dob" placeholder="dob" value={editUserValue.dob} onChange={handleEditInput} className="form-input"></input>
-              <br/><select name="gender" value={editUserValue.gender} onChange={handleEditInput}>
-                <option> Gender </option>
-                <option value="male"> Male </option>
-                <option value="female"> Female </option>
-              </select>
-              <br/><button> Edit </button>
+          <div className="col-md-4 offset-md-4">
+            <form 
+              onSubmit={userEditForm} 
+              style={{border:"1px solid gray", marginTop:"20px", padding:"20px", borderRadius:"5px"}}
+            >
+              <div className="form-group">
+                <input type="text" name="first_name" placeholder="First Name" className="form-control"
+                       value={editUserValue.first_name} onChange={handleEditInput}></input>
+              </div>
+              <div className="form-group">
+                <input type="text" name="last_name" placeholder="Last Name" className="form-control"
+                       value={editUserValue.last_name} onChange={handleEditInput}></input>
+              </div>
+              <div className="form-group">
+                <input type="email" name="email" placeholder="Email" className="form-control"
+                       value={editUserValue.email} onChange={handleEditInput}></input>
+              </div>
+              <div className="form-group">
+                <input type="text" name="mobile" placeholder="Mobile" className="form-control"
+                       value={editUserValue.mobile} onChange={handleEditInput}></input>
+              </div>
+              <div className="form-group">
+                <input type="date" name="dob" placeholder="dob" className="form-control"
+                       value={editUserValue.dob} onChange={handleEditInput}></input>
+              </div>
+              <div className="form-group">
+                <select name="gender" className="form-control" 
+                        value={editUserValue.gender} onChange={handleEditInput}>
+                  <option> Gender </option>
+                  <option value="male"> Male </option>
+                  <option value="female"> Female </option>
+               </select>              
+              </div>
+              <button type="submit" className="btn btn-primary form-control">Submit</button>
             </form>
-          </div> 
+          </div>
         </div>
       }
     </div>
